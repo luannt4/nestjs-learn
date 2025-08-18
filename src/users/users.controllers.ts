@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from 'src/users/dtos/create-user.dto';
 // import { UpdateUserDto } from 'src/dtos/update-user.dto';
@@ -9,8 +17,6 @@ export class UsersController {
 
   @Get()
   getUsers() {
-    console.log('jm: attempting to get all users');
-
     return this.usersService.getAllUsers();
   }
 
@@ -19,12 +25,12 @@ export class UsersController {
     @Body()
     user: CreateUserDto,
   ) {
-    console.log(
-      'jm: attempting to creating a new user with details ' +
-        JSON.stringify(user),
-    );
     const response = this.usersService.createUser(user);
-
     return response;
+  }
+
+  @Delete(':id')
+  public deleteUser(@Param('id', ParseIntPipe) id: number) {
+    this.usersService.deleteUser(id);
   }
 }

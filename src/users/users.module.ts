@@ -9,7 +9,6 @@ import { Profile } from 'src/profile/profile.entity';
   controllers: [UsersController],
   providers: [UsersService],
   exports: [UsersService],
-  // imports: [forwardRef(() => AuthModule)],
   imports: [TypeOrmModule.forFeature([User, Profile])],
 })
 export class UsersModule {}
