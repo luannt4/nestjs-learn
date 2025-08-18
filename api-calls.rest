@@ -1,0 +1,69 @@
+### GET localhost:3000
+GET http://localhost:3000
+
+### GET all users
+GET http://localhost:3000/users
+
+### GET user by query string (if gender specified)
+GET http://localhost:3000/users?gender=male
+
+### GET specific user (if ID specified)
+GET http://localhost:3000/users/1
+
+### GET user by filter ; not optional
+GET http://localhost:3000/users/married/false
+
+
+### POST create user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "id": 10,
+    "firstName": "sfsdfsd",
+    "lastName": "asfads",
+    "email": "somethsdfsding@email.com",
+    "age": 28,
+    "gender": "female",
+    "password": "fatcat32",
+    "isMarried": false
+}
+
+
+### PATCH user
+PATCH http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "id": 1,
+    "gender": "female"
+}
+
+
+### GET get Tweets
+GET http://localhost:3000/tweet/1
+Content-Type: application/json
+
+
+
+### POST login user
+POST http://localhost:3000/auth
+Content-Type: application/json
+
+{
+    
+    "email": "john@gmail.com",
+    "password": "fatcat32"
+}
+
+
+### POST create user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "john123",
+    "email": "john123@email.com",
+    "password": "fatcat32",
+    "profile": {"firstName": "",}
+}
