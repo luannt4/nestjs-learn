@@ -35,6 +35,6 @@ export class Tweet {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @ManyToOne(() => User, (user) => user.tweets) // Bi-directional relation
+  @ManyToOne(() => User, (user) => user.tweets, { eager: true }) // Bi-directional relation
   user: User | null;
 }

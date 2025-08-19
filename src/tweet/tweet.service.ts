@@ -13,6 +13,13 @@ export class TweetService {
     private readonly tweetRepository: Repository<Tweet>,
   ) {}
 
+  public async getTweets(userId: number) {
+    return await this.tweetRepository.find({
+      where: { user: { id: userId } },
+      relations: { user: true },
+    });
+  }
+
   public async CreateTweet(createTweetDto: CreateTweetDto) {
     //Find user with the given userid form user table
     const user = await this.userService.FindUserById(createTweetDto.userId);
