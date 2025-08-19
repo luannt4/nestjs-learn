@@ -3,11 +3,12 @@ import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
-  Entity,
+  Entity, OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Tweet } from '../tweet/tweet.entity';
 
 @Entity()
 export class User {
@@ -37,6 +38,9 @@ export class User {
     cascade: ['insert'],
   })
   profile?: Profile;
+
+  @OneToMany(()=>Tweet, (tweet) => tweet.user, {})
+  tweets: Tweet[];
 
   @CreateDateColumn()
   createdAt: Date;

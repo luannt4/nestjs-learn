@@ -38,4 +38,8 @@ export class UsersService {
     //Send a response
     return { deleted: true };
   }
+
+  public async FindUserById(id: number) {
+    return await this.userRepository.findOneBy({ id });
+  }
 }
